@@ -7,8 +7,9 @@ import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
 
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./components/Globalstyle";
-import { lightTheme, darkTheme } from "./components/Themes"
+import { GlobalStyles } from "./components/globalStyles";
+import { lightTheme, darkTheme } from "./components/Theme"
+import Toggle from "./components/Toggler"
 
 import "./App.css";
 
@@ -29,26 +30,24 @@ function App() {
     setCart(cart.filter((p) => p.id !== plant.id));
   };
 
-  const [theme, themeToggler] = useDarkMode();
+  // const [theme, themeToggler, mountedComponent] = useDarkMode();
 
+  // const themeMode = theme === 'light' ? lightTheme : darkTheme;
   
-
-  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  // if(!mountedComponent) return <div/>
   
-
   return (
-    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <>
-      <GlobalStyles/>
-    <ThemeProvider theme={themeMode}>
-       <Toggle theme={theme} toggleTheme={themeToggler} />
+    // <ThemeProvider theme={themeMode}>
+    //   <>
+    //   <GlobalStyles/>
+    //    <Toggle theme={theme} toggleTheme={themeToggler} />
     <div>
       <Router>
         <nav className="container">
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
-          <button onClick={themeToggler}>Switch Theme</button>
+          {/* <button onClick={themeToggler}>Switch Theme</button> */}
           <ul className="steps">
             <li>
               <NavLink exact to="/">
@@ -83,8 +82,8 @@ function App() {
         <Route path="/checkout" component={CheckoutForm} />
       </Router>
     </div>
-    </>
-    </ThemeProvider>
+    // </>
+    // </ThemeProvider>
   );
 }
 
