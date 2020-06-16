@@ -30,13 +30,23 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+Stateful class components have state, and stateless functional components do not. To build a stateful class component, you need to have a constructor and super to bring in props and initialize state (which can be extended via React.Component).
+
 2. Describe the different phases of the component lifecycle.
+
+componentDidMount is like birth and is called after a component is rendered and elements are put into the DOM, componentDidUpdate is like growth because it gets called after a component's props or state are updated, and componentWillUnmount is like death and it is called when a component is unmounted from the DOM. 
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
+When we first load the page, a component gets mounted. When we change the component's state or props, it gets re-rendered in the updating phase. When we unmount a component it is being taken out of the DOM and the state returns to it's initial state.
+
 4. Define stateful logic.
 
+Stateful logic is any code that uses state, but in the case of hooks it is defined as a behaviour created with the use of one or more hooks. If you need to use a lifecycle hook in your components, you use stateful logic. For instance, with Instagram they use stateful logic to keep posts loaded before you scroll on them. Using stateful logic effectively gives a better, faster experience to the user because they aren't left waiting for things to load.
+
 5. Describe how to test a React component with React Testing Library.
+
+There is end-to-end testing, integration testing, and unit testing. To use the React Testing Library you need to have some kind of expectation, a matcher, and a way to render the test ie: querying the whole app, using a matcher like getByText, and using a regular expression to search for the text upon render.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
