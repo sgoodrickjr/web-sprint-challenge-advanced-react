@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import  {useDarkMode} from "./components/useDarkMode"
 
 import PlantList from "./components/PlantList";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
 
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "./components/Globalstyle";
+import { lightTheme, darkTheme } from "./components/Themes"
+
 import "./App.css";
 
+
+
 function App() {
+
   // array of plants that have been added to the cart
   const [cart, setCart] = useState([]);
 
@@ -21,13 +29,26 @@ function App() {
     setCart(cart.filter((p) => p.id !== plant.id));
   };
 
+  const [theme, themeToggler] = useDarkMode();
+
+  
+
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  
+
   return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <>
+      <GlobalStyles/>
+    <ThemeProvider theme={themeMode}>
+       <Toggle theme={theme} toggleTheme={themeToggler} />
     <div>
       <Router>
         <nav className="container">
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
+          <button onClick={themeToggler}>Switch Theme</button>
           <ul className="steps">
             <li>
               <NavLink exact to="/">
@@ -62,6 +83,8 @@ function App() {
         <Route path="/checkout" component={CheckoutForm} />
       </Router>
     </div>
+    </>
+    </ThemeProvider>
   );
 }
 
