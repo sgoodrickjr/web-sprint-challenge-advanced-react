@@ -6,10 +6,7 @@ import PlantList from "./components/PlantList";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
 
-import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./components/globalStyles";
-import { lightTheme, darkTheme } from "./components/Theme"
-import Toggle from "./components/Toggler"
+import Navbar from "./components/Navbar";
 
 import "./App.css";
 
